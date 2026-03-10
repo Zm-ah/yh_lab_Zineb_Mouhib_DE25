@@ -21,13 +21,13 @@ Här beskrivs vilka entiteter som fins i systemet och hur de relaterar till vara
 ## Beskrivning av entiteter:
 
 ### Student
-Är  en studerande vid YrkesCo.
+Är  en studerande vid YrkesCo som tillhör en klass 
 
 ### Klass
-Är en klass inom ett program.
+Tillhör ett program.
 
 ### Program
-ÄR ett utbildningsprogram som består av flera kurser. 
+Är ett utbildningsprogram som består av flera kurser. 
 
 ### Kurs: 
 Är en kurs som ingår i ett program eller kan ges som fristående kurs 
@@ -36,10 +36,15 @@ Här beskrivs vilka entiteter som fins i systemet och hur de relaterar till vara
 Är en person som ansvarare för planering och uppföljning inom YrkesCo.
 
 ### Utbildare: 
-Är en persone som undres´visar i en eller flera klasse. kan ha olika avtal (fastanställd- konsult) 
+Är en persone som undrevisar i en eller flera klasse. kan ha olika avtal (fastanställd- konsult) 
 
 ### Anläggning: 
-Är fysisk plats där YrkesCo bedriver utbildning, exempelvis Stockhilm - Göteborg.
+Är fysisk plats där YrkesCo bedriver utbildning, exempelvis Stockhilm - Göteborg. Kan ha fler utbildnigsledare samt klasser. 
+
+
+### Kurstillälle:
+är en kurs som kan ha flera klass med flera registrerigng. 
+
 
 ### Företag: 
 Är ett företag som YrkesCo sammarbetar med, exempelvis uppdragsgivare eller praktikplatser. 
