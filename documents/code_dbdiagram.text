@@ -1,0 +1,108 @@
+Table person {
+  person_id integer [primary key]
+  namn varchar
+  efter_namn varchar
+  persunnummer varchar [unique]
+  gata varchar
+  postnummer varchar
+  ort varchar
+  email varchar [unique]
+}
+
+Table student {
+  student_id integer [primary key]
+  person_id integer [ref: - person.person_id]
+  klass_id integer [ref: > klass.klass_id]
+}
+
+Table klass {
+  klass_id integer [primary key]
+  namn varchar
+  program_id integer [ref: > program.program_id]
+  utbildningsledare_id integer [ref: > utbildningsledare.utbildningsledare_id]
+}
+
+Table utbildningsledare {
+  utbildningsledare_id integer [primary key]
+  person_id integer [ref: - person.person_id]
+  program_id integer [ref: > program.program_id]
+}
+
+Table program {
+  program_id integer [primary key]
+  namn varchar
+  anläggning_id integer [ref: > anläggning.anläggning_id]
+}
+
+Table kurs {
+  kurs_id integer [primary key]
+  kurs_namn varchar
+  kurs_kod varchar
+  poäng integer
+}
+
+Table kurstillfällen {
+  kurstillfällen_id integer [primary key]
+  kurs_id integer [ref: > kurs.kurs_id]
+  klass_id integer [ref: > klass.klass_id]
+  poäng integer
+  kursnamn varchar
+}
+
+Table registrering {
+  registrering_id integer [primary key]
+  student_id integer [ref: > student.student_id]
+  kurstillfällen_id integer [ref: > kurstillfällen.kurstillfällen_id]
+  betyg varchar
+  datum date
+}
+
+Table lärare {
+  lärare_id integer [primary key]
+  person_id integer [ref: - person.person_id]
+  fast_anställd boolean
+  konsult boolean
+  företag_id integer [ref: > företag.företag_id]
+  konsultföretag_id integer [ref: > konsultföretag.konsultföretag_id]
+}
+
+
+Table företag {
+  företag_id integer [primary key]
+  företags_namn varchar
+  branch varchar
+  ort varchar
+}
+
+Table konsultföretag {
+  konsultföretag_id integer [primary key]
+  företags_namn varchar
+  branch varchar
+  ort varchar
+}
+
+Table anläggning {
+  anläggning_id integer [primary key]
+  ort varchar
+}
+
+// Kopplingstabeller (M:N)
+Table lärare_kurs {
+  lärare_id integer [ref: > lärare.lärare_id]
+  kurs_id integer [ref: > kurs.kurs_id]
+}
+
+Table program_kurs {
+  program_id integer [ref: > program.program_id]
+  kurs_id integer [ref: > kurs.kurs_id]
+}
+
+Table lia_praktik {
+  lia_id integer [primary key]
+  student_id integer [ref: > student.student_id]
+  företag_id integer [ref: > företag.företag_id]
+  start_datum date
+  slut_datum date
+}
+
+Ref: "klass"."klass_id" < "klass"."utbildningsledare_id" 
